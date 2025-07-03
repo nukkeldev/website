@@ -1,0 +1,29 @@
+pre {
+  margin: 1em 0;
+  padding: 10px 10px;
+  background-color: #11111b;
+  border-radius: 0.5em;
+
+  overflow-y: scroll;
+  line-height: 1.5;
+}
+
+.bash .constant {
+  color: var(--subtext0);
+}
+
+.bash .operator {
+  color: var(--text);
+}
+
+.shtml .tag, .shtml .attribute {
+  color: var(--text);
+}
+
+.shtml .punctuation_bracket {
+  color: var(--yellow);
+}
+
+.shtml .string {
+  color: var(--green);
+}

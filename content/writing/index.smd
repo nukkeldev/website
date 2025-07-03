@@ -1,0 +1,10 @@
+---
+.title = "Writing",
+.date = @date(""),
+.author = "nukkeldev",
+.layout = "writing.shtml",
+.draft = false,
+---
+
+I write about various things -- primarily related to programming -- that you can
+find listed chronologically below:

@@ -1,0 +1,75 @@
+---
+.title = "About",
+.date = @date("2025-07-02T23:07:00"),
+.author = "nukkeldev",
+.layout = "index.shtml",
+.draft = false,
+---
+
+## whoami
+
+My name is **Ethan** and I am an **18-year-old** student from the US who has 
+been programming for the better part of eight years. I am currently pursuing a 
+*Bachelors of Science in Computer Engineering* after having recently graduated 
+high-school in *June 2025*.
+
+Programming as been my primary interest and hobby for almost half of my life, 
+yet a quick browse of my [Github](https://github.com/nukkeldev/) repositories 
+makes it quite evident that I haven't finished many projects. I've treated my 
+"early" years (2017-2024) programming as time exploring different languages, 
+libraries, and topics to find what I was good at, what I enjoyed, and 
+what I disliked (which holds the majority uncontested.)
+
+I love to manage my own memory (my lord and savior Zig for having amazing 
+allocation semantics), hate on dynamic typing, over-optimize the shit out of 
+seemingly menial things, love the boilerplate that [Vulkan](https://www.vulkan.org/) 
+requires, and obsessively link things -- hoping to fuel someone else's rabbit-holing.
+
+Whether I'm writing an OS, [software raytracer](https://github.com/nukkeldev/rtftwatfwir), 
+or my current fascination: [a game engine](https://github.com/nukkeldev/garden), 
+I find the best way for me to understand things is being able to build it myself. 
+This often gets me rabbit-holed 10 projects down from where I started, but I 
+have fun writing each of them and learn a lot in the process.
+
+I spent my time in high-school on [2046](https://tahomarobotics.org/) --
+the later three years as one of two programming leads. We used Java to write 
+programs running on a poorly underpowered, closed source [microprocessor + FPGA](https://web.archive.org/web/20250703070113/https://www.ni.com/docs/en-US/bundle/roborio-20-specs/page/specs.html)
+that is fortunately going to be updated in the near future for later students.
+While I do dislike the technical aspects of using Java for this use-case, I
+couldn't imagine what it would have been like to teach students of varying
+programming levels any supported language (Java, C++, or Python) but Java.
+
+All my development work is under the pseudonym `nukkeldev`; derived from the 
+first Minecraft Java account I was given by my father when I was much younger.
+
+### ---------
+
+![](/badges/zig.svg) ![](/badges/nixos.svg) ![](/badges/rust.svg)
+
+I program primarily in [Zig](https://ziglang.org/) and previously [Rust](https://www.rust-lang.org/).
+
+I run Windows 10 on my primary desktop (though will switch soon) and run NixOS 
+everywhere else (see [my config](https://github.com/nukkeldev/nixos-config)).
+
+I am currently working on a game engine / renderer in Zig called [`garden`](https://github.com/nukkeldev/garden) 
+on top of [SDL3's GPU API](https://wiki.libsdl.org/SDL3/CategoryGPU) (though I 
+plan on porting to either Vulkan or WebGPU soon) and using [Slang](https://shader-slang.org/) 
+shaders. It is currently very pre-alpha as I've only been working on it in my
+free time for the past few weeks but hope for it to be a platform I can
+experiment with graphics on.
+
+### Archive
+
+- [WPILog Parser](https://github.com/nukkeldev/wpilog-parser)
+  - A parser for [FRC WPILib's DataLog](https://github.com/wpilibsuite/allwpilib/blob/main/wpiutil/doc/datalog.adoc) 
+    format in Rust.
+- [RTFTWATFWIR](https://github.com/nukkeldev/rtftwatfwir)
+  - A Rust implementation of Peter Shirley's RTIOW and RTTNW books (software raytracing).
+- [Parametric Renderer](https://github.com/nukkeldev/parametrics)
+  - A parametric mesh renderer in Rust using [`wgpu`](https://wgpu.rs/).
+- [MDNS Impl](https://github.com/nukkeldev/mdns-impl)
+  - An implementation of the MDNS/DNS-SD specifications in Rust.
+- Plus dozens of unfinished projects in various languages that I have lost.
+  - In late 2024, my primary hard-drive got completely corrupted and I was not
+    able to recover it's files so I've lost all projects that I hadn't uploaded
+    to a remote repository (something I often forget to do for a long time).

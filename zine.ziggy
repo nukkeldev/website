@@ -1,0 +1,15 @@
+Site {
+    .title = "nukkeldev",
+    .host_url = "https://nukkeldev.github.io/",
+    .content_dir_path = "content",
+    .layouts_dir_path = "layouts",
+    .assets_dir_path = "assets",
+    .static_assets = [
+        "favicon.ico",
+        "external/Temml/Temml.woff2",
+        "fonts/0xProto-2.500/0xProto-Regular.woff2",
+        "fonts/0xProto-2.500/0xProto-Italic.woff2",
+        "fonts/0xProto-2.500/0xProto-Bold.woff2",
+        "fonts/Bebas Neue/BebasNeue-Regular.ttf",
+    ],
+}

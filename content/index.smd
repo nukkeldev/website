@@ -1,0 +1,26 @@
+---
+.title = "Home",
+.date = @date("2025-07-02T23:07:00"),
+.author = "nukkeldev",
+.layout = "index.shtml",
+.draft = false,
+---
+
+This is my personal site that holds [writings](/writing) of varying topics, random things I've
+learnt or found, and updates on what I'm working on. You can find the source of
+this website [(TODO) here](https://example.com/). If you would like to contact
+me please use my email: [nukkel.dev@gmail.com](mailto:nukkel.dev@gmail.com) or
+my Discord (`nukkeldev`).
+
+>## [styleguide]($block)
+> While I am by no means a designer (_very, very far from it_), I take care to 
+> make sure that this website is as put together as I am able to. 
+> The primary font for both the content and the code of this website is [0xProto](https://github.com/0xType/0xProto) 
+> with headings using [Bebas Neue](https://fonts.google.com/specimen/Bebas+Neue).
+> The color palette is sampled from **Catppuccin Mocha** (the best theme by far.)
+
+## TODO
+
+- Add a footer to show when the page was generated and the commit hash.
+- Add a devlog section for garden.
+- Make a proper showcase page.

@@ -1,0 +1,169 @@
+/* Fonts */
+
+@font-face {
+  font-family: "0xProto";
+  src: url("../fonts/0xProto-2.500/0xProto-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "0xProto";
+  src: url("../fonts/0xProto-2.500/0xProto-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "0xProto";
+  src: url("../fonts/0xProto-2.500/0xProto-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../fonts/Bebas Neue/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Colors */
+
+:root {
+  /* https://catppuccin.com/palette/ (Mocha) */
+  --rosewater: #f5e0dc;
+  --flamingo:  #f2cdcd;
+  --pink:      #f5c2e7;
+  --mauve:     #cba6f7;
+  --red:       #f38ba8;
+  --maroon:    #eba0ac;
+  --peach:     #fab387;
+  --yellow:    #f9e2af;
+  --green:     #a6e3a1;
+  --teal:      #94e2d5;
+  --sky:       #89dceb;
+  --sapphire:  #74c7ec;
+  --blue:      #89b4fa;
+  --lavender:  #b4befe;
+  --text:      #cdd6f4;
+  --subtext1:  #bac2de;
+  --subtext0:  #a6adc8;
+  --overlay2:  #9399b2;
+  --overlay1:  #7f849c;
+  --overlay0:  #6c7086;
+  --surface2:  #585b70;
+  --surface1:  #45475a;
+  --surface0:  #313244;
+  --base:      #1e1e2e;
+  --mantle:    #181825;
+  --crust:     #11111b;
+}
+
+/* Headings */
+
+h1 {
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--lavender);
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* Text Styles */
+
+b,
+strong {
+  color: var(--yellow);
+}
+
+a {
+  color: var(--peach);
+}
+
+code {
+  font-family: "0xProto", monospace;
+  font-size: 1em;
+  color: var(--red);
+}
+
+/* Body */
+
+html {
+  color: var(--text);
+  font-family: "0xProto", serif;
+  font-size: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: var(--mantle);
+  min-height: 100%;
+}
+
+body {
+  width: 800px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--base);
+  border-radius: 1em;
+}
+
+/* Titles, Navigation, and Elements */
+
+.separator {
+  color: var(--blue);
+  font-weight: bold;
+  text-align: center;
+}
+
+.separator.draft {
+  color: var(--red);
+}
+
+.site-title {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.block {
+  margin: 0 0;
+  padding: 0.1em 1em;
+  background-color: var(--crust);
+}
+
+.block h1, .block h2, .block h3, .block h4 {
+  color: var(--peach);
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+/* Page-specific */
+
+#writings {
+  font-family: "Bebas Neue", monospace;
+  font-size: 1.5em;
+}
+
+.article-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5em;
+}
+
+.article-nav {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+}

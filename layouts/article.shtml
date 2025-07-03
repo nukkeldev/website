@@ -1,0 +1,22 @@
+<extend template="base.shtml">
+<head id="head">
+</head>
+<body id="body">
+  <h1 :text="$page.title"></h1>
+  <!-- <ctx :html="$page.toc()"></ctx> -->
+  <span class="article-header">
+    <p>[Words:
+      <ctx :text="$page.wordCount()"></ctx>]</p>
+    /
+    <div class="article-nav">
+      [
+      <div :if="$page.prevPage?()"><a href="$if.link()">prev</a>|</div>
+      <div :if="$page.hasPrev().not()">prev|</div>
+      <a href="$page.parentSection().link()">up</a>
+      <div :if="$page.nextPage?()">|<a href="$if.link()">next</a></div>
+      <div :if="$page.hasNext().not()">|next</div>
+      ]
+    </div>
+  </span>
+  <div :html="$page.content()"></div>
+</body>

@@ -1,0 +1,15 @@
+<extend template="base.shtml">
+<head id="head">
+</head>
+<body id="body">
+  <h1 :text="$page.title"></h1>
+  <div :html="$page.content()"></div>
+  <h2>Writings</h2>
+  <ul :loop="$page.subpages()">
+    <div :if="$loop.it.draft.not()"><li><a href="$loop.it.link()" :text="$loop.it.title"></a></li></div>
+  </ul>
+  <h2>Drafts</h2>
+  <ul :loop="$page.subpages()">
+    <div :if="$loop.it.draft"><li><a href="$loop.it.link()" :text="$loop.it.title"></a></li></div>
+  </ul>
+</body>

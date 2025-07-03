@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head id="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title :text="$site.title"></title>
+    <!-- stylesheets -->
+    <link type="text/css" rel="stylesheet" href="$site.asset('stylesheets/style.css').link()">
+    <link type="text/css" rel="stylesheet" href="$site.asset('stylesheets/highlight.css').link()">
+    <!-- mathtex -->
+    <link type="text/css" rel="stylesheet" href="$site.asset('external/Temml/Temml-Local.css').link()">
+    <script defer src="$site.asset('external/Temml/temml.min.js').link()"></script>
+    <script defer src="$site.asset('external/Temml/render-mathtex.js').link()"></script>
+    <super>
+  </head>
+  <body id="body">
+    <h1 class="site-title" :text="$site.title"></h1>
+    <nav>
+      <a href="$site.page('').link()">home</a>|
+      <a href="$site.page('about').link()">about</a>|
+      <a href="$site.page('writing').link()">writing</a>
+      <!-- <ctx :if="$site.page('devlog').subpages().first?()">
+         &nbsp; • &nbsp;
+        <a href="$if.link()">Devlog</a>
+      </ctx> -->
+    </nav>
+    <div :if="$page.draft.not()"><p class="separator">&lt;--&gt;</p></div>
+    <div :if="$page.draft"><p class="separator draft">&lt;-[draft in progress]-&gt;</p></div>
+    <super>
+  </body>
+</html>
