@@ -1,6 +1,6 @@
 Site {
     .title = "nukkeldev",
-    .host_url = "https://nukkeldev.github.io/",
+    .host_url = "https://nukkel.pages.dev/",
     .content_dir_path = "content",
     .layouts_dir_path = "layouts",
     .assets_dir_path = "assets",
