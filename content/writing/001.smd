@@ -1,7 +1,0 @@
----
-.title = "001 - fixing the segfaults in 000",
-.date = @date("2025-07-04"),
-.author = "nukkeldev",
-.layout = "article.shtml",
-.draft = true,
----

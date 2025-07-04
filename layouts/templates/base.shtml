@@ -27,5 +27,10 @@
     <div :if="$page.draft.not()"><p class="separator">&lt;--&gt;</p></div>
     <div :if="$page.draft"><p class="separator draft">&lt;-[draft in progress]-&gt;</p></div>
     <super>
+    <footer>
+      <hr>
+      Built on
+      <span class="date"><ctx :text="$build.generated.formatHTTP()"></ctx></span>
+    </footer>
   </body>
 </html>

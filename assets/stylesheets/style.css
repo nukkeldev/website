@@ -112,6 +112,14 @@ body {
   flex-direction: column;
   background-color: var(--base);
   border-radius: 1em;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    width: 100%;
+    padding: 0 1em;
+  }
 }
 
 /* Titles, Navigation, and Elements */
@@ -146,6 +154,20 @@ nav {
   flex-direction: row;
   justify-content: center;
   font-size: 1.2em;
+}
+
+.date {
+  color: var(--flamingo);
+}
+
+footer {
+  text-align: center;
+}
+
+footer hr {
+  margin: 1em;
+  margin-bottom: 1.5em;
+  color: var(--lavender);
 }
 
 /* Page-specific */
