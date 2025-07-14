@@ -18,11 +18,8 @@
     <nav>
       <a href="$site.page('').link()">home</a>|
       <a href="$site.page('about').link()">about</a>|
-      <a href="$site.page('writing').link()">writing</a>
-      <!-- <ctx :if="$site.page('devlog').subpages().first?()">
-         &nbsp; • &nbsp;
-        <a href="$if.link()">Devlog</a>
-      </ctx> -->
+      <a href="$site.page('writing').link()">writing</a>|
+      <a href="$site.page('log').link()">log</a>
     </nav>
     <div :if="$page.draft.not()"><p class="separator">&lt;--&gt;</p></div>
     <div :if="$page.draft"><p class="separator draft">&lt;-[draft in progress]-&gt;</p></div>

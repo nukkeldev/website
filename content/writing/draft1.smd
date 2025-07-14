@@ -1,0 +1,72 @@
+---
+.title = "001 - An Autopsy of the Triangle",
+.date = @date("2025-07-13"),
+.author = "nukkeldev",
+.layout = "article.shtml",
+.draft = true,
+---
+
+# Motivation
+
+- Hello, World => Clear ; Very cursory introduction, not a display of semantics
+- ??? => Triangle ; this is our patient we'll be autopsying
+- Novice at GAPIs in general, 2 years of experience with primarily `wgpu`
+- Preface for designing an RHI, more on that in a different post.
+    - SDL3GPU -> NRI -> Homebrewed
+
+# Setup
+
+- Analyzing official examples in the source language of the API (C for Vulkan, C++ for Dawn, etc.)
+- Covering examples for `Vulkan`, `WebGPU` (`Dawn`, maybe `wgpu`), D3D12 (maybe 11 too), and OpenGL.
+    - Not Metal as I don't use MacOS.
+- All built with Zig's build system (clang).
+- Host and device side tracing with Tracy for available APIs (all except WebGPU) as well as NVidia NSight.
+    - Look at draw calls, render passes, frame preparation times, etc.
+- Analyze APIs in reverse chronological order, might be better to show what we hadn't though we were missing.
+- All code is in GH repo.
+
+## Shaders
+
+- All examples use the same _modern_ Slang shader, compiled to the proper formats.
+
+# WebGPU
+
+## Dawn
+
+
+
+## wgpu
+
+
+
+# Vulkan
+
+- Spec by KHR, impl by LunarG
+
+# D3D
+
+## 12
+
+
+
+## 11
+
+
+
+# OpenGL
+
+
+
+# Lowest-Common Denominator
+
+
+
+# Differences
+
+
+
+# Sources
+
+## Possibly
+
+https://www.youtube.com/watch?v=QyjyWUrHsFc
