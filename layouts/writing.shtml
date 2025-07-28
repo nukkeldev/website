@@ -6,6 +6,6 @@
   <div :html="$page.content()"></div>
   <h2>Writings</h2>
   <ul :loop="$page.subpages()">
-    <div :if="$loop.it.draft.not()"><li><a href="$loop.it.link()" :text="$loop.it.title"></a></li></div>
+    <li :if="$loop.it.draft.not()"><a href="$loop.it.link()" :text="$loop.it.title"></a></li>
   </ul>
 </body>

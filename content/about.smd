@@ -42,7 +42,9 @@ first Minecraft Java account I was given by my father when I was much younger.
 
 ### ---------
 
-![](/badges/zig.svg) ![](/badges/nixos.svg) ![](/badges/rust.svg)
+[](<$image.siteAsset('badges/zig.svg').alt('The Zig Logo')>) 
+[](<$image.siteAsset('badges/nixos.svg').alt('The NixOS Logo')>) 
+[](<$image.siteAsset('badges/rust.svg').alt('The Rust Logo')>) 
 
 I program primarily in [Zig](https://ziglang.org/) and previously [Rust](https://www.rust-lang.org/).
 

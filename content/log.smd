@@ -4,6 +4,7 @@
 .author = "nukkeldev",
 .layout = "log.shtml",
 .draft = false,
+.custom = { .meta = "This is a page where I share brief updates on things.", },
 ---
 
 [](<$section.id('net').data('date', '2025-07-27', 'title', 'net')>)
@@ -13,7 +14,7 @@ From the brief time I've spent on the field, I really enjoy learning about it as
 with the things I've learnt. Additionally, I would be interested in network administration as a career.
 
 Currently, I am working through Cisco Packet Tracer courses on [Cisco Networking Academy](https://www.netacad.com/)
-and you can find my notes and progress [here](https://github.com/nukkeldev/cisco-packet-tracer).
+and you can find my notes and progress on my [notes repository](https://github.com/nukkeldev/cisco-packet-tracer).
 
 [](<$section.id('grdn').data('date', '2025-07-27', 'title', 'an update on garden')>)
 I ~seem to~ start and stop projects quite frequently and unfortunately, [`garden`](https://github.com/nukkeldev/garden)

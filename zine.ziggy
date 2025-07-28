@@ -6,7 +6,7 @@ Site {
     .assets_dir_path = "assets",
     .static_assets = [
         "favicon.ico",
-        "external/Temml/Temml.woff2",
+        // "external/Temml/Temml.woff2",
         "fonts/0xProto-2.500/0xProto-Regular.woff2",
         "fonts/0xProto-2.500/0xProto-Italic.woff2",
         "fonts/0xProto-2.500/0xProto-Bold.woff2",

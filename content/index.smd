@@ -4,11 +4,11 @@
 .author = "nukkeldev",
 .layout = "index.shtml",
 .draft = false,
+.custom = { .meta = "My personal site for things I find interesting." },
 ---
 
 This is my personal site that holds [writings](/writing) of varying topics, random things I've
-learnt or found, and updates on what I'm working on. You can find the source of
-this website [here](https://github.com/nukkeldev/website). If you would like to contact
+learnt or found, and updates on what I'm working on. If you would like to contact
 me, please use my email: [nukkel.dev@gmail.com](mailto:nukkel.dev@gmail.com) or Discord (`nukkeldev`).
 
 >## [styleguide]($block)
