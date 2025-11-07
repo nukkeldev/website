@@ -37,8 +37,7 @@ m|mtext {
     font-family: Noto-Serif, serif;
 }
 
-pre,
-code {
+pre {
     font-size: 11pt;
     overflow-x: scroll;
 }

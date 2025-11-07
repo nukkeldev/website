@@ -1,7 +1,8 @@
 #!/bin/bash
 # Usage:
 #   ./build.sh (build|watch)?
-shopt -s nullglob
+shopt -s nullglob # To allow for zero matches.
+shopt -s extglob # To allow negating wildcards.
 
 MODE="$1"
 
@@ -16,7 +17,7 @@ mkdir -p dist/writing
 
 # Copy assets to dist/.
 cleancss assets/index.css -o dist/index.css
-cp assets/*.ttf dist/
+cp assets/!(*.css) dist/
 
 # Keep track of the pids for watch mode and kill them when we exit.
 pids=()
