@@ -15,7 +15,8 @@ done
 mkdir -p dist/writing
 
 # Copy assets to dist/.
-cp assets/* dist/
+cleancss assets/index.css -o dist/index.css
+cp assets/*.ttf dist/
 
 # Keep track of the pids for watch mode and kill them when we exit.
 pids=()
