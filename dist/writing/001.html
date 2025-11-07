@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      /* -- Fonts -- */
+      
+      @namespace url('http://www.w3.org/1999/xhtml');
+      @namespace m url('http://www.w3.org/1998/Math/MathML');
+      
+      @font-face {
+          font-family: 'STIX-Two-Math';
+          font-display: swap;
+          src: local('STIX Two Math'), local('STIXTwoMath-Regular'), url('/STIXTwoMath-Regular.otf') format('opentype');
+      }
+      
+      @font-face {
+          font-family: 'Noto-Serif';
+          font-weight: normal;
+          font-display: swap;
+          src: local('Noto Serif'), local('NotoSerif-Regular'), url('/NotoSerif-Regular.ttf') format('truetype');
+      }
+      
+      @font-face {
+          font-family: 'Noto-Serif';
+          font-weight: bold;
+          font-display: swap;
+          src: local('Noto Serif Bold'), local('NotoSerif-Bold'), url('/NotoSerif-Bold.ttf') format('truetype');
+      }
+      
+      @font-face {
+          font-family: 'Noto-Serif';
+          font-style: italic;
+      
+          font-display: swap;
+          src: local('Noto Serif Italic'), local('NotoSerif-Italic'), url('/NotoSerif-Italic.ttf') format('truetype');
+      }
+      
+      html,
+      m|mtext {
+          font-size: 12pt;
+          font-family: Noto-Serif, serif;
+      }
+      
+      pre,
+      code {
+          font-size: 11pt;
+          overflow-x: scroll;
+      }
+      
+      m|math {
+          font-family: STIX-Two-Math;
+          padding: 0.5em 0;
+      }
+      
+      /* -- Styling & Resets -- */
+      
+      body {
+          /* Restrict the width of the page to be readable. */
+          max-width: min(100vw, 512px);
+      }
+      
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+          /* Normalize heading margins. */
+          margin: 0.5em 0;
+      }
+      
+      a,
+      a:visited,
+      a:hover,
+      a:active {
+          color: blue;
+      }
+      
+      #page-title {
+          /* Get rid of the bright blue title. */
+          color: inherit;
+      }
+      
+      ul,
+      ol {
+          /* Shrink the default indent. */
+          padding-left: 1.5em;
+      }
+      
+      li>p {
+          margin: 0.5em 0;
+      }
+      
+      /* "Footnotes" */
+      aside {
+          font-style: italic;
+          font-size: 10pt;
+      }
+      
+      #tags {
+          margin-top: 0;
+      }
+      
+      #page-footer {
+          margin-top: 1em;
+      }
+    </style>
+    <title>Developing This Site In Typst - nukkeldev</title>
+  </head>
+  <body>
+    <header id="page-header">
+      <h2><a id="page-title" href="/">nukkeldev</a></h2>
+      <p>[<a href="/">index</a>] [<a href="/#about">about</a>] [<a href="/#writing">writing</a>]</p>
+    </header>
+    <h3>001 - Developing This Site In Typst</h3>
+    <p id="tags">2025-11-06 + tags: <em>typst</em>, <em>site</em></p>
+    <p>—</p>
+    <p>This brief article goes over my rewrite of this website using <a href="https://typst.app/">Typst</a> and bash.</p>
+    <div class="outline">
+      <nav role="doc-toc">
+        <ol style="list-style-type: none">
+          <li><a href="#loc-1">Goals</a></li>
+          <li>
+            <div><a href="#loc-2">Overview</a></div>
+            <ol style="list-style-type: none">
+              <li><a href="#loc-3">Templates</a></li>
+              <li><a href="#loc-4">Cool Features</a></li>
+              <li><a href="#loc-5">Collapsible Sections</a></li>
+              <li><a href="#loc-6">Link Replacements</a></li>
+            </ol>
+          </li>
+          <li><a href="#loc-7">Conclusion</a></li>
+        </ol>
+      </nav>
+    </div>
+    <h4 id="loc-1">Goals</h4>
+    <p>This is the second iteration of this site. Initially, it was written with <a href="https://zine-ssg.io/">zine</a> which, while it wasn’t bad to work with, wasn’t built for my use-case and constrained what I wanted to do too much.</p>
+    <p>Upon considering a rewrite, I’d been using <a href="https://typst.app/">Typst</a> to typeset my math and physics notes for a couple of years and seeing it had (<em>very</em>) experimental HTML support, I felt it’d be good to try my luck with.</p>
+    <p>As I had a bit of free-time, I decided to establish some goals/constraints on my rewrite:</p>
+    <ol>
+      <li>
+        <p>As close to “pure” Typst as possible.</p>
+        <ol>
+          <li>Unfortunately, as Typst is only able to produce a single output file, we still need another program to trigger the compilation calls, but a bash script seems sufficient for that.</li>
+        </ol>
+      </li>
+      <li>
+        <p>Full control over all parts of the output.</p>
+        <ol>
+          <li>Typst’s html support allows for both typed and raw access to HTML elements.</li>
+          <li>If we specify our own <code>&lt;html>&lt;/html></code>, we overwrite the default which allows us to write the <code>&lt;head></code>.</li>
+          <li>If the HTML exporter does not support a specific Typst feature (i.e. graphics, equations, etc.), we are able to fallback on <code>html.frame</code> to embed the content rendered as SVG.</li>
+        </ol>
+      </li>
+      <li>
+        <p>Capable of rendering mathematics client-side.</p>
+        <ol>
+          <li>This is primarily for performance reasons. Rendering all of the equations to SVGs server-side would be the most ideal scenario as there wouldn’t be any ambiguity in their rendering across platforms. Unfortunately, the 10s of kilobytes per equation is quite discouraging and leaves it only to be used when absolutely necessary.</li>
+          <li>As of <a href="https://github.com/typst/typst/commit/16de17a1b3c9b14646b468e54639f7829c24de60">gh:typst/typst [commit: 16de17a1]</a>, Typst’s HTML exporter does not support anything related to mathematics as stated above. Luckily, <a href="https://github.com/typst/typst/pull/7206">gh:typst/typst [pr: #7206]</a> is working on an initial implementation of getting MathML working in the exporter and it works well.</li>
+          <li>Alteratively, <a href="https://codeberg.org/akida/mathyml/">cb:akida/mathyml</a> is a package to render equations into MathML in pure Typst. Both seem similar feature-wise so I’d prefer to not use another external dependency.</li>
+        </ol>
+      </li>
+      <li>
+        <p>Common header/footer, frontmatter-like article abstractions, etc.</p>
+        <ol>
+          <li>Easy to implement with <code>import</code>ing and modules.</li>
+        </ol>
+      </li>
+      <li>
+        <p>Should be rendered consistently across browsers and platforms.</p>
+        <ol>
+          <li>This is out-of-scope for Typst and falls more into CSS styling and fonts, of which Typst allows me to easily work with.</li>
+        </ol>
+      </li>
+    </ol>
+    <p>After some brief searching, I found a couple of existing Typst static-site generators (see <a href="https://github.com/Glomzzz/typsite">gh:Glomzzz/typsite</a>, <a href="https://github.com/kokic/kodama">gh:kokic/kodama</a>, <a href="https://github.com/kawayww/tola-ssg">gh:kawayww/tola-ssg</a>, <a href="https://gitlab.com/pcoves/theta">gl:pcoves/theta</a>)<sup>[<a id="to-1" href="#from-1">1</a>]</sup>. But rather than use them, I decided to have more fun and write one myself (the results of which you are looking at).</p>
+    <p>I accomplished all of the above goals to a reasonable degree within ~three days. Below I detail the basic architecture as well as some points I found interesting.</p>
+    <h4 id="loc-2">Overview</h4>
+    <p>I dislike over-complexity, as everyone should, though I have my fair share of it. In evaluating the above goals, I wanted to use as minimal of a “stack” as possible: Typst + bash.</p>
+    <h5 id="loc-3">Templates</h5>
+    <p>I have a fairly concise shared library <code>_lib.typ</code> wherein I define the “templates” for the pages. For the writings, such as this one, the templating function <code>writing-format</code> (which in turn uses <code>html-format</code>) consumes a dictionary for details on the document (which also allows for a <em>mostly</em> automatic writing listing on index).</p>
+    <p>For instance, for this article the setup is as follows:</p>
+    <pre><code data-lang="typ"><span style="color: #d73948">#</span><span style="color: #d73948">import</span> <span style="color: #198810">"../_lib.typ"</span>: <span style="color: #d73948">*</span><br><br><span style="color: #d73948">#</span><span style="color: #d73948">let</span> info <span style="color: #d73948">=</span> (<br>  path: <span style="color: #198810">"001"</span>,<br>  date: <span style="color: #4b69c6">datetime</span>(year: <span style="color: #b60157">2025</span>, month: <span style="color: #b60157">11</span>, day: <span style="color: #b60157">6</span>),<br>  title: <span style="color: #198810">"Developing This Site In Typst"</span>,<br>  tags: (<span style="color: #198810">"typst"</span>, <span style="color: #198810">"site"</span>),<br>)<br><br><span style="color: #d73948">#</span><span style="color: #d73948">show</span>: writing-format.<span style="color: #4b69c6">with</span>(info)</code></pre>
+    <p>The above code-block is dynamically read from the source files during compilation, which I find quite cool. Of course, that means that as the source changes, de-sync may occur, but in this case, as it is the top of the document, it’s rarely going to change (except when I modify the <code>info</code> format or contents)<sup>[<a id="to-2" href="#from-2">2</a>]</sup>.</p>
+    <p>For the <code>index.typ</code>, I directly use the parent template <code>html-format</code> which sets up the entire HTML structure.</p>
+    <pre><code data-lang="typ"><span style="color: #d73948">#</span><span style="color: #d73948">let</span> <span style="color: #4b69c6">html-format</span>(title, content) <span style="color: #d73948">=</span> <span style="color: #d73948">context</span> {<br>  <span style="color: #d73948">show</span>: html.html.<span style="color: #4b69c6">with</span>(lang: <span style="color: #198810">"en"</span>)<br>  html.<span style="color: #4b69c6">head</span>({<br>    html.<span style="color: #4b69c6">meta</span>(charset: <span style="color: #198810">"utf-8"</span>)<br>    html.<span style="color: #4b69c6">meta</span>(name: <span style="color: #198810">"viewport"</span>, content: <span style="color: #198810">"width=device-width, initial-scale=1"</span>)<br>    html.<span style="color: #4b69c6">link</span>(href: <span style="color: #198810">"/index.css"</span>, rel: <span style="color: #198810">"stylesheet"</span>)<br>    html.<span style="color: #4b69c6">title</span>(title <span style="color: #d73948">+</span> <span style="color: #198810">" - nukkeldev"</span>)<br>  })<br>  html.<span style="color: #4b69c6">body</span>({<br>    page-header<br>    content<br>    page-footer<br>  })<br>}</code></pre>
+    <aside>Unfortunately, I elected not to dynamically read this one as it is much more prone to changing.</aside>
+    <h5 id="loc-4">Cool Features</h5>
+    <p>While rewriting, I found (either on my own, from other codebases, or from the forum) a few cool features with the current HTML exporter implementation that I didn’t find officially documented elsewhere.</p>
+    <ul>
+      <li>
+        <p>When a Typst element is labeled <em>and</em> directly referenced (i.e. with a <code>link</code>), the output is <code>id'd</code> to that label.</p>
+        <ul>
+          <li>All headings, if an <code>outline</code> is present, are given <code>id</code>s in the form <code>loc-#</code> if a label isn’t attached (the outline properly links to the custom labels if they are present).</li>
+        </ul>
+      </li>
+      <li>As hinted at in the goals, without explictly defining an <code>&lt;html></code> structure for the document, we are given a basic one. Unfortunately, when using a custom HTML root, some features (i.e. <code>footnote</code>) are disabled.</li>
+    </ul>
+    <details open><summary><span style="display: inline-block"><h5 id="loc-5">Collapsible Sections</h5></span></summary><p>While I was able to make sections collapsible by wrapping them with <code>html.detail</code>, I first tried to do it with just <code>show</code> rules, but wasn’t able to do it quickly so I will come back to it later. This should be possible with just <code>show</code> rules with some sort of “<em>query heading, query next heading of the same level, query content in between, fin</em>” but I find that rather abusive of <code>show</code> rules (heading → heading + content). Instead, it would be easier (and preferable) to do this in <code>html-format</code> by iterating over the <code>content.children</code>, but I have yet to implement that.</p></details>
+    <h5 id="loc-6">Link Replacements</h5>
+    <p>One thing we can do with <code>show</code> rules (+ regex) though, is replacing the content of links.</p>
+    <p>When preferable I’d rather not have to type out the full <code>#link("...")[...]</code> for links that are for common things (i.e. github repos, commits, etc.) To do this, I used AI for the one of the few good uses: <em>writing regex</em>.</p>
+    <pre><code data-lang="regex">^https://(github\.com|gitlab\.com|codeberg\.org)/([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)(/(commit|pulls?|issues)/([0-9a-fA-F]+))?/?$</code></pre>
+    <p>That beauty matches repositories, commits, pull requests, and issues from Github, Gitlab, and Codeberg. I can match it once in the <code>show</code> rule and again in the body to get the capture groups to format the links as you saw above when I first mentioned equation rendering.</p>
+    <h4 id="loc-7">Conclusion</h4>
+    <p>Overall, this rewrite has been quite fun so far (considering it’s been three days) and I’ll definitely keep refining and adding more features to this. There is still quite a bit of work to do on the styling; I hate CSS.</p>
+    <p>—</p>
+    <aside>[<a id="from-1" href="#to-1">1</a>] I have not used any of the listed projects nor am familiar with their developers.</aside>
+    <aside>[<a id="from-2" href="#to-2">2</a>] I love commas.</aside>
+    <footer id="page-footer">
+      <p>—</p>
+      <p>[<a href="/">index</a>] [<a href="#page-title">top</a>] This page was rendered on 2025-11-06</p>
+    </footer>
+  </body>
+</html>

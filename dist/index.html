@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      /* -- Fonts -- */
+      
+      @namespace url('http://www.w3.org/1999/xhtml');
+      @namespace m url('http://www.w3.org/1998/Math/MathML');
+      
+      @font-face {
+          font-family: 'STIX-Two-Math';
+          font-display: swap;
+          src: local('STIX Two Math'), local('STIXTwoMath-Regular'), url('/STIXTwoMath-Regular.otf') format('opentype');
+      }
+      
+      @font-face {
+          font-family: 'Noto-Serif';
+          font-weight: normal;
+          font-display: swap;
+          src: local('Noto Serif'), local('NotoSerif-Regular'), url('/NotoSerif-Regular.ttf') format('truetype');
+      }
+      
+      @font-face {
+          font-family: 'Noto-Serif';
+          font-weight: bold;
+          font-display: swap;
+          src: local('Noto Serif Bold'), local('NotoSerif-Bold'), url('/NotoSerif-Bold.ttf') format('truetype');
+      }
+      
+      @font-face {
+          font-family: 'Noto-Serif';
+          font-style: italic;
+      
+          font-display: swap;
+          src: local('Noto Serif Italic'), local('NotoSerif-Italic'), url('/NotoSerif-Italic.ttf') format('truetype');
+      }
+      
+      html,
+      m|mtext {
+          font-size: 12pt;
+          font-family: Noto-Serif, serif;
+      }
+      
+      pre,
+      code {
+          font-size: 11pt;
+          overflow-x: scroll;
+      }
+      
+      m|math {
+          font-family: STIX-Two-Math;
+          padding: 0.5em 0;
+      }
+      
+      /* -- Styling & Resets -- */
+      
+      body {
+          /* Restrict the width of the page to be readable. */
+          max-width: min(100vw, 512px);
+      }
+      
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+          /* Normalize heading margins. */
+          margin: 0.5em 0;
+      }
+      
+      a,
+      a:visited,
+      a:hover,
+      a:active {
+          color: blue;
+      }
+      
+      #page-title {
+          /* Get rid of the bright blue title. */
+          color: inherit;
+      }
+      
+      ul,
+      ol {
+          /* Shrink the default indent. */
+          padding-left: 1.5em;
+      }
+      
+      li>p {
+          margin: 0.5em 0;
+      }
+      
+      /* "Footnotes" */
+      aside {
+          font-style: italic;
+          font-size: 10pt;
+      }
+      
+      #tags {
+          margin-top: 0;
+      }
+      
+      #page-footer {
+          margin-top: 1em;
+      }
+    </style>
+    <title>Home - nukkeldev</title>
+  </head>
+  <body>
+    <header id="page-header">
+      <h2><a id="page-title" href="/">nukkeldev</a></h2>
+      <p>[<a href="/">index</a>] [<a href="/#about">about</a>] [<a href="/#writing">writing</a>]</p>
+    </header>
+    <p>This is my personal website / portfolio written in <a href="https://github.com/typst/typst">Typst</a> and minimal CSS. I publish writings on programming, maths, etc. of varying lengths here.</p>
+    <div class="outline">
+      <nav role="doc-toc">
+        <ol style="list-style-type: none">
+          <li>
+            <div><a href="#about">About Me</a></div>
+            <ol style="list-style-type: none">
+              <li><a href="#background">Background</a></li>
+            </ol>
+          </li>
+          <li><a href="#writing">Writing</a></li>
+        </ol>
+      </nav>
+    </div>
+    <details open><summary><span style="display: inline-block"><h3 id="about">About Me</h3></span></summary><p>I am an 18-year-old first-year university student from the U.S. pursing a bachelor’s in computer engineering.</p><p>My primary interests are in:</p><ul><li>Programming: <a href="https://ziglang.org/">Zig</a>, Compilers, RISC-V Kernels, Graphics Programming, <a href="https://lean-lang.org/">LEAN4</a>*, Audio Synthesis*</li><li>Mathematics: Calculus, Formal Logic, Set Theory, Graph Rewriting*</li><li>Typesetting: <a href="https://github.com/typst/typst">Typst</a></li><li>Robotics: <a href="https://urc.marssociety.org/">URC</a>, ex-<a href="https://www.firstinspires.org/programs/frc/">FRC</a></li><li>Music: Listening, Playing*</li><li>Writing</li></ul><p>* Topics I intend to learn.</p><p>You can find me in the following places:</p><ul><li>Github: <a href="https://github.com/nukkeldev">https://github.com/nukkeldev</a></li><li>Email: <a href="mailto:nukkel.dev@gmail.com">nukkel.dev@gmail.com</a></li><li>LinkedIn: <a href="https://www.linkedin.com/in/ethfw/">https://www.linkedin.com/in/ethfw/</a></li></ul><details><summary><span style="display: inline-block"><h4 id="background">Background</h4></span></summary><p>I developed an interest in programming early 2017 and since then have been mostly self-taught. Going through my old emails and other sources, I believe the timeline was approximately as follows:</p><ul><li>In 2017, I created a <a href="https://scratch.mit.edu/">Scratch</a> account and made several projects.</li><li>In 2018, I started to learn JavaScript, C# with <a href="https://unity.com/">Unity</a>, Java, and joined my first <a href="https://www.firstinspires.org/programs/ftc/">FTC</a> team.</li><li>In 2019, I started to play more with hardware (i.e. <a href="https://www.arduino.cc/">Arduinos</a>), started learning Python, made my first (now deleted) Github account, and joined another FTC team after moving.</li><li>In 2020, I focused mostly on projects in Java, with some Web development.</li><li>In 2021, I started to have an interest in compilers, operating systems, and embedded (despite being horribly underskilled of course), joined my first FRC team, started learning TypeScript and “modern” SPA frameworks, and had my first exposure to Linux.</li><li>In 2022, started moving towards C/C++, experimented with shader programming, became programming lead for my FRC team, Rust became my primary language, and rebranded to my current Github.</li><li>In 2023, besides robotics, I focused on graphics programming with <a href="https://wgpu.rs/">wgpu</a> (see <a href="https://github.com/nukkeldev/parametrics">nukkeldev/parametrics</a>) and CPU raytracing (see <a href="https://github.com/nukkeldev/rtftwatfwir">nukkeldev/rtftwatfwir</a>), and continued to pursue previous interests to various lesser degrees.</li><li>In 2024, I spent most of my time on robotics, continued experimenting with Rust, lots of parsing (see <a href="https://github.com/nukkeldev/wpilog-parser">nukkeldev/wpilog-parser</a>), P2P over DNS, etc.</li><li>In 2025, I swapped to Zig as my main language, wrote <a href="https://github.com/nukkeldev/zpp">nukkeldev/zpp</a> to transpile C++ headers to work with Zig’s FFI, wrote a rendering engine <a href="https://github.com/nukkeldev/garden">nukkeldev/garden</a>, and a RISC-V S-mode kernel for hardware introspection <a href="https://github.com/nukkeldev/rvhw">rvhw</a>. While all three of the aforementioned projects do work in some capacity, I don’t believe any are mature enough for them to be considered v0.1+.</li></ul><p>Much of my early work, and even some recent work, was lost due to hardware changes/failures. While I’d like to have more to show for my close to a decade of programming, being able to design software with a focus on performance regardless of language, alongside my immense exposure of ways to create software, is what I value most.</p></details></details>
+    <h3 id="writing">Writing</h3>
+    <p>Below you can find all writings I have published:</p>
+    <ul>
+      <li><a href="/writing/001.html">001 - Developing This Site In Typst [tags: <em>typst</em>, <em>site</em>]</a></li>
+      <li><a href="/writing/000.html">000 - Site Status [tags: <em>typst</em>, <em>site</em>, <em>not-for-reading</em>]</a></li>
+    </ul>
+    <footer id="page-footer">
+      <p>—</p>
+      <p>[<a href="/">index</a>] [<a href="#page-title">top</a>] This page was rendered on 2025-11-06</p>
+    </footer>
+  </body>
+</html>

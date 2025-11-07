@@ -1,0 +1,102 @@
+/* -- Fonts -- */
+
+@namespace url('http://www.w3.org/1999/xhtml');
+@namespace m url('http://www.w3.org/1998/Math/MathML');
+
+@font-face {
+    font-family: 'STIX-Two-Math';
+    font-display: swap;
+    src: local('STIX Two Math'), local('STIXTwoMath-Regular'), url('/STIXTwoMath-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Noto-Serif';
+    font-weight: normal;
+    font-display: swap;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), url('/NotoSerif-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto-Serif';
+    font-weight: bold;
+    font-display: swap;
+    src: local('Noto Serif Bold'), local('NotoSerif-Bold'), url('/NotoSerif-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto-Serif';
+    font-style: italic;
+
+    font-display: swap;
+    src: local('Noto Serif Italic'), local('NotoSerif-Italic'), url('/NotoSerif-Italic.ttf') format('truetype');
+}
+
+html,
+m|mtext {
+    font-size: 12pt;
+    font-family: Noto-Serif, serif;
+}
+
+pre,
+code {
+    font-size: 11pt;
+    overflow-x: scroll;
+}
+
+m|math {
+    font-family: STIX-Two-Math;
+    padding: 0.5em 0;
+}
+
+/* -- Styling & Resets -- */
+
+body {
+    /* Restrict the width of the page to be readable. */
+    max-width: min(100vw, 512px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /* Normalize heading margins. */
+    margin: 0.5em 0;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    color: blue;
+}
+
+#page-title {
+    /* Get rid of the bright blue title. */
+    color: inherit;
+}
+
+ul,
+ol {
+    /* Shrink the default indent. */
+    padding-left: 1.5em;
+}
+
+li>p {
+    margin: 0.5em 0;
+}
+
+/* "Footnotes" */
+aside {
+    font-style: italic;
+    font-size: 10pt;
+}
+
+#tags {
+    margin-top: 0;
+}
+
+#page-footer {
+    margin-top: 1em;
+}
