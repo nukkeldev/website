@@ -1,5 +1,9 @@
 #!/bin/bash
+# Usage:
+#   ./build.sh (build|watch)?
 shopt -s nullglob
+
+MODE="$1"
 
 # Collect the input files.
 files=("src/index.typ")
@@ -10,10 +14,19 @@ done
 # Create the dist/ folder if not present.
 mkdir -p dist/writing
 
-cp src/*.css dist/
-cp src/*.otf dist/
-cp src/*.ttf dist/
+# Copy assets to dist/.
+cp assets/* dist/
 
+# Keep track of the pids for watch mode and kill them when we exit.
+pids=()
+cleanup() {
+    for pid in "${pids[@]}"; do
+        kill "$pid" 2>/dev/null
+    done
+}
+trap cleanup EXIT
+
+# Compile all the source files.
 for path in "${files[@]}"; do
     # Strip the leading src/.
     file="${path/src\//}"
@@ -23,5 +36,20 @@ for path in "${files[@]}"; do
     outfile="dist/${base}.html"
     echo "Compiling $path -> $outfile..."
     # Compile the file.
-    ./typst compile --features html --format html --root src/ "$path" "$outfile"
+    case "$MODE" in
+        watch) 
+            ./typst watch --features html --format html --root . "$path" "$outfile" &
+            pids+=("$!")
+            ;;
+        build)
+            echo "asd"
+            ;&
+        "")
+            ./typst compile --features html --format html --root . "$path" "$outfile"
+            ;;
+        *)
+            echo "Invalid mode."
+            ;;
+    esac
 done
+wait

@@ -23,7 +23,10 @@
 #let page-footer = html.footer(id: "page-footer")[
   ---
 
-  [#link("/")[index]] [#link("#page-title")[top]] This page was rendered on #datetime.today().display()
+  [#link("/")[index]] [#link("#page-title")[top]]
+  -- Source: https://github.com/nukkeldev/website
+
+  This page was rendered on #datetime.today().display().
 ]
 
 /// Formatting and configuration for HTML export.
@@ -69,10 +72,7 @@
   html.head({
     html.meta(charset: "utf-8")
     html.meta(name: "viewport", content: "width=device-width, initial-scale=1")
-
-    // TODO: Conditionally embed vs src
-    html.style(read("index.css"))
-
+    html.link(href: "/index.css", rel: "stylesheet")
     html.title(title + " - nukkeldev")
   })
   html.body({
