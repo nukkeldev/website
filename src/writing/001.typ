@@ -87,12 +87,6 @@ While rewriting, I found (either on my own, from other codebases, or from the fo
   - All headings, if an `outline` is present, are given `id`s in the form `loc-#` if a label isn't attached (the outline properly links to the custom labels if they are present).
 - As hinted at in the goals, without explictly defining an `<html>` structure for the document, we are given a basic one. Unfortunately, when using a custom HTML root, some features (i.e. `footnote`) are disabled.
 
-#fold[==== Collapsible Sections][
-  While I was able to make sections collapsible by wrapping them with `html.detail`, I first tried to do it with just `show` rules, but wasn't able to do it quickly so I will come back to it later.
-  This should be possible with just `show` rules with some sort of "_query heading, query next heading of the same level, query content in between, fin_" but I find that rather abusive of `show` rules (heading #sym.arrow heading + content).
-  Instead, it would be easier (and preferable) to do this in `html-format` by iterating over the `content.children`, but I have yet to implement that.
-]
-
 ==== Link Replacements
 
 One thing we can do with `show` rules (+ regex) though, is replacing the content of links.
