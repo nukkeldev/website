@@ -1,0 +1,30 @@
+body {
+    /* Restrict the width of the page to be readable. */
+    max-width: min(100vw, 784px);
+}
+
+.title {
+    font-size: 1em;
+}
+
+#hidden-til-link > a {
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    top: 30px;
+    left: 100px;
+    font-size: 8pt;
+}
+
+.subitem {
+    margin-left: 2em;
+}
+
+summary {
+    cursor: pointer;
+    user-select: none;
+}
+
+p, ul {
+    margin: 0;
+}
