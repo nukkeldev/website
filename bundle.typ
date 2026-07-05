@@ -10,9 +10,9 @@
   link(<home>)[home]
 }
 
-#document("index.html", title: [nukkel])[
+#document("index.html", title: [ethan])[
   #head
-  #title[nukkel]
+  #title[ethan]
 
   #html.span(id: "hidden-til-link", link(<til>)[click here])
 
